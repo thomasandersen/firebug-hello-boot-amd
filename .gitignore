@@ -1,0 +1,10 @@
+.DS_Store
+*/target/
+target/
+out/
+build/
+release/
+*.iws
+*.ipr
+**.iml
+.idea
