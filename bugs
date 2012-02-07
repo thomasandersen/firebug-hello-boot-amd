@@ -1,0 +1,36 @@
+Bootstrapped extension is not updated
+
+When updating a bootstrapped extension (using HelloBootAMD)
+
+Using Firebug 1.10 r12833
+Firefox 9.0.1
+OS X 10.7.2
+
+----
+
+[Bootstrap] MyModule does not work when firebug/net/requestObserver is defined
+
+Using the HelloBootAMD
+If I add firebug/net/requestObserver to the array passed to define() it seems
+
+Using Firebug 1.10 r12833
+Firefox 9.0.1
+OS X 10.7.2
+
+----
+
+Can not see trace messages in FBTrace from HelloBootAMD
+
+http://code.google.com/p/fbug/issues/detail?id=5217
+
+After installing Firebug, FBTrace, HelloBootAMD from r12846 I can not get traces from HelloBootAMD. 
+Also, I can not see HELLOBOOTAMD in FBTrace's options panel
+
+Tracing works (without the associated color set in main.js) if I skip the IF test for FBTrace.DBG_HELLOBOOTAMD
+
+Firefox 9.0.1
+Firebug 1.10 - r12846
+FBTrace 1.10 - r12846
+HelloBootAMD - r12846
+
+OS X 10.7.2
