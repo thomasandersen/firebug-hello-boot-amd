@@ -8,3 +8,4 @@ release/
 *.ipr
 **.iml
 .idea
+*.xpi
