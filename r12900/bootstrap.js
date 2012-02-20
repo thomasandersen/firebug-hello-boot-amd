@@ -4,22 +4,15 @@
 // XPCOM
 
 var {classes: Cc, interfaces: Ci, utils: Cu} = Components;
-Cu.import("resource://gre/modules/Services.jsm");
 
 // ********************************************************************************************* //
 // Constants
 
-const BOOTSTRAP_REASONS = [
-    "", // the bootstrap reason is 1 based
-    "APP_STARTUP",
-    "APP_SHUTDOWN",
-    "ADDON_ENABLE",
-    "ADDON_DISABLE",
-    "ADDON_INSTALL",
-    "ADDON_UNINSTALL",
-    "ADDON_UPGRADE",
-    "ADDON_DOWNGRADE"
-];
+// Default preferences for bootstrap extensions are registered dynamically.
+var defaultPrefs =
+{
+    "DBG_HELLOBOOTAMD": true
+}
 
 // ********************************************************************************************* //
 // Firefox Bootstrap API
@@ -48,6 +41,7 @@ function firebugStartup()
     {
         Cu.import("resource://firebug/loader.js");
         FirebugLoader.registerBootstrapScope(this);
+        FirebugLoader.registerDefaultPrefs(defaultPrefs);
     }
     catch (e)
     {
@@ -118,14 +112,6 @@ function firebugFrameUnload(Firebug)
         return;
 
     Firebug.unregisterExtension("hellobootamd");
-
-    // Make sure another panel is selected if the current one has been removed.
-    // xxxHonza: should be done automatically by Firebug
-    var panel = Firebug.chrome.getSelectedPanel();
-    if (panel.name == "helloBootAMD")
-        Firebug.chrome.selectPanel("html");
-
-    Firebug.chrome.syncMainPanels();
 }
 
 // ********************************************************************************************* //

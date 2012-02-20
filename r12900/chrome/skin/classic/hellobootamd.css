@@ -19,5 +19,5 @@
    Rule syntax: .DBG_<ext-id>
    See: http://getfirebug.com/wiki/index.php/FBTrace for more details */
 .DBG_HELLOBOOTAMD {
-    color: rgb(101, 0, 114);
+    color: rgb(0, 0, 255);
 }

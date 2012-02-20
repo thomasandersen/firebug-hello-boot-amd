@@ -2,16 +2,14 @@
 
 define([
     "firebug/lib/trace",
-    "firebug/trace/traceModule",
-    "firebug/trace/traceListener",
     "hellobootamd/myPanel",
     "hellobootamd/myModule",
 ],
-function(FBTrace, TraceModule, TraceListener) {
+function(FBTrace, MyPanel, MyModule) {
 
 // ********************************************************************************************* //
 // Documentation
-//
+
 // Firebug coding style: http://getfirebug.com/wiki/index.php/Coding_Style
 // Firebug tracing: http://getfirebug.com/wiki/index.php/FBTrace
 
@@ -22,17 +20,11 @@ var theApp =
 {
     initialize: function()
     {
-        // Register trace customization listener for FBTrace. DBG_HELLOBOOTAMD represents a CSS rule
-        // that is automatially associated with all logs prefixed with "helloBootAMD;".
-        // The prefix is removed (third parameter is true).
-        // The last parameter represents URL of the stylesheet that should be used by
-        // the tracing console.
-        this.traceListener = new TraceListener("helloBootAMD;", "DBG_HELLOBOOTAMD", true,
-            "chrome:/hellobootamd/skin/hellobootamd.css");
-        TraceModule.addListener(this.traceListener);
-
         if (FBTrace.DBG_HELLOBOOTAMD)
             FBTrace.sysout("helloBootAMD; HelloBootAMD extension initialize");
+
+        // Registration of Firebug panels and modules is made within appropriate files,
+        // but it could be also done here.
 
         // TODO: Extension initialization
     },
@@ -49,10 +41,10 @@ var theApp =
         Firebug.unregisterStringBundle("chrome://hellobootamd/locale/hellobootamd.properties");
 
         // TODO: Extension shutdown
-
-        TraceModule.removeListener(this.traceListener);
     }
 }
+
+// ********************************************************************************************* //
 
 return theApp;
 

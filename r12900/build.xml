@@ -25,7 +25,7 @@
         </replace>
 
         <!-- Compress files (ZIP) -->
-        <zip destfile="${file-name}" basedir="${build.dir}" update="true" />
+        <zip destfile="${build.dir}/${file-name}" basedir="${build.dir}" update="true" />
 
         <echo message="HelloBootAMD version: ${VERSION}${RELEASE} created!"/>
     </target>
